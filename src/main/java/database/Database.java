@@ -34,7 +34,7 @@ public class Database {
         return c;
     }
 
-    public Statement getStatement() throws SQLException {
-        return c.createStatement();
+    public void insertAdresse(){
+
     }
 }
