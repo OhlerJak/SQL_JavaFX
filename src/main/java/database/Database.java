@@ -1,9 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Database {
     private static Database instance;
@@ -26,8 +23,12 @@ public class Database {
         c = DriverManager.getConnection("jdbc:derby://localhost:1527/CooleDB","app","password");
         // Create DB
         Statement s = c.createStatement();
-        s.executeUpdate("CREATE TABLE IF NOT EXISTS Adresse(id int primary key, wohnort varchar(255));");
-        s.executeUpdate("CREATE TABLE IF NOT EXISTS Person(id int primary key , name varchar(255), adresse int, foreign key (adresse) references Adresse(id));");
+        try{
+            s.executeUpdate("CREATE TABLE Adresse(id int primary key, wohnort varchar(255));");
+            s.executeUpdate("CREATE TABLE Person(id int primary key , name varchar(255), adresse int, foreign key (adresse) references Adresse(id));");
+        }catch (SQLException e){
+            // Passt schon ...
+        }
     }
 
     public Connection getConnection() {
@@ -35,6 +36,6 @@ public class Database {
     }
 
     public void insertAdresse(){
-
+//        PreparedStatement ps = c.prepareStatement()
     }
 }
