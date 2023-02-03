@@ -1,5 +1,5 @@
 # SQL_JavaFX
-Ohler + Schopper
-In diesem "Projekt" arbeiten:
-  Jakob Ohler,
+Ohler + Schopper<br/>
+In diesem "Projekt" arbeiten:</br>
+  Jakob Ohler,</br>
   Alexander Schopper
