@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
 import java.util.Collections;
 
 public class Person {
@@ -51,7 +52,7 @@ public class Person {
         this.id.set(id);
     }
 
-    public ObservableList<Person> getPersonList(){
+    public ObservableList<Person> getPersonList() throws SQLException{
         Person[] data = Database.getInstance().getallData();
 
 

@@ -24,7 +24,7 @@ public class Database {
     private Connection c;
 
     public Database() throws SQLException {
-        c = DriverManager.getConnection("jdbc:derby://localhost:1527/CooleDB","app","password");
+        c = DriverManager.getConnection("jdbc:derby://localhost:1527/PersonDB;create=true","app","password");
         // Create DB
         Statement s = c.createStatement();
         try{
@@ -41,10 +41,14 @@ public class Database {
 
     public void insertAdresse(){
 //        PreparedStatement ps = c.prepareStatement()
+        // PreparedStatement ps = c.createStatement()
     }
 
 
-    public Person[] getallData(){
+    public Person[] getallData() throws SQLException{
+        PreparedStatement ps = c.prepareStatement("SELECT * FROM Person p INNER JOIN Adresse a ON a.id=p.adresse");
+        ResultSet rs = ps.executeQuery();
+        System.out.println(rs);;
         return null;
     }
 }
