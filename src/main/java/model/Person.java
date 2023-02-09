@@ -1,7 +1,14 @@
 package model;
 
+import database.Database;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.Collections;
 
 public class Person {
     private final StringProperty vorname = new SimpleStringProperty();
@@ -43,6 +50,14 @@ public class Person {
     public void setId(String id) {
         this.id.set(id);
     }
+
+    public ObservableList<Person> getPersonList(){
+        Person[] data = Database.getInstance().getallData();
+
+
+        return FXCollections.observableArrayList(data);
+    }
+
 
     public int getIDasInt(){
         return Integer.parseInt(id.get());

@@ -7,10 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Person;
 
 public class PersonController {
     public ListView lvPersonen;
+    public TextField tfID;
+    public TextField tfVorname;
+    public TextField tfWohnort;
     @FXML
     private Button btRefresh;
     @FXML
@@ -18,20 +23,24 @@ public class PersonController {
     @FXML
     private Button btSave;
 
+    private Person model;
+
     public static void show(Stage stage){
         try {
             FXMLLoader loader = new FXMLLoader(PersonController.class.getResource("PersonView.fxml"));
+
             Parent parent = loader.load();
             stage.setScene(new Scene(parent));
             stage.setTitle("Personen Verwaltung");
             stage.show();
         }catch (Exception e) {
-
+           e.printStackTrace();
         }
     }
     @FXML
     private void initialize(){
-
+        model = new Person();
+        
     }
 
 

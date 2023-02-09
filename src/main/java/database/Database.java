@@ -1,6 +1,9 @@
 package database;
 
+import model.Person;
+
 import java.sql.*;
+import java.util.List;
 
 public class Database {
     private static Database instance;
@@ -16,6 +19,7 @@ public class Database {
     public static Database getInstance() {
         return instance;
     }
+
 
     private Connection c;
 
@@ -37,5 +41,10 @@ public class Database {
 
     public void insertAdresse(){
 //        PreparedStatement ps = c.prepareStatement()
+    }
+
+
+    public Person[] getallData(){
+        return null;
     }
 }
