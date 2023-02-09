@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Person;
 
+import java.sql.SQLException;
+
 public class PersonController {
     public ListView lvPersonen;
     public TextField tfID;
@@ -43,8 +45,18 @@ public class PersonController {
         
     }
 
+    private void refresh() {
+
+        try {
+            lvPersonen.setItems(model.getPersonList());
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void refreshOnAction(ActionEvent actionEvent) {
+        refresh();
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {

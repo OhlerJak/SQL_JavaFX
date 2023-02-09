@@ -6,32 +6,30 @@ import java.sql.*;
 import java.util.List;
 
 public class Database {
-    private static Database instance;
-
-    static {
-        try {
-            instance = new Database();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static Database instance =null;
 
     public static Database getInstance() {
-        return instance;
+       if(instance == null){
+           instance = new Database();
+       }
+       return instance;
     }
 
 
     private Connection c;
 
-    public Database() throws SQLException {
-        c = DriverManager.getConnection("jdbc:derby://localhost:1527/PersonDB;create=true","app","password");
+    public Database()  {
+        try{
+
+        c = DriverManager.getConnection("jdbc:derby://localhost:1527/PersonDB;","app","password");
         // Create DB
         Statement s = c.createStatement();
-        try{
+
             s.executeUpdate("CREATE TABLE Adresse(id int primary key, wohnort varchar(255));");
             s.executeUpdate("CREATE TABLE Person(id int primary key , name varchar(255), adresse int, foreign key (adresse) references Adresse(id));");
+            System.out.println("Executed!");
         }catch (SQLException e){
-            // Passt schon ...
+            e.printStackTrace();
         }
     }
 
